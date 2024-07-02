@@ -60,5 +60,10 @@ if __name__ == "__main__":
             stock, bid_price, ask_price, price = getDataPoint(quote)
             prices[stock] = price
             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
-
-        print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
+            
+        # Ensure that both ABC and DEF stocks are present before calculating the ratio
+        if "ABC" in prices and "DEF" in prices:
+            ratio = getRatio(prices["ABC"], prices["DEF"])
+            print("Ratio %s" % ratio)
+        else:
+            print("Required stocks not available to calculate ratio")
